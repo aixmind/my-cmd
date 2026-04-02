@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>终端命令管理库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #333;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #4ec9b0;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .search-input {
+            width: 60%;
+            padding: 12px 20px;
+            font-size: 16px;
+            background: #2d2d2d;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #e0e0e0;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: #4ec9b0;
+        }
+
+        .search-hint {
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+            font-size: 16px;
+        }
+
+        .category {
+            margin-bottom: 25px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #1e1e1e;
+            overflow: hidden;
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #252525;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .category-header:hover {
+            background: #2a2a2a;
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #569cd6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            font-size: 20px;
+            color: #888;
+            transition: transform 0.3s;
+        }
+
+        .category.collapsed .toggle-btn,
+        .tool.collapsed .toggle-btn,
+        .sub-tool.collapsed .toggle-btn,
+        .sub-sub-tool.collapsed .toggle-btn {
+            transform: rotate(-90deg);
+        }
+
+        .category-content {
+            padding: 0 20px;
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .category.collapsed .category-content {
+            max-height: 0;
+            padding: 0 20px;
+        }
+
+        .tool {
+            margin: 20px 0;
+            padding-left: 15px;
+            border-left: 3px solid #4ec9b0;
+        }
+
+        .tool-title {
+            font-size: 15px;
+            color: #9cdcfe;
+            margin-bottom: 12px;
+            padding-left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tool-title:hover {
+            color: #4ec9b0;
+        }
+
+        .tool.collapsed .tool-content {
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .tool-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .sub-tool {
+            margin: 10px 0;
+            padding-left: 15px;
+            border-left: 2px solid #569cd6;
+        }
+
+        .sub-tool-title {
+            font-size: 14px;
+            color: #4ec9b0;
+            margin-bottom: 8px;
+            padding-left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sub-tool-title:hover {
+            color: #9cdcfe;
+        }
+
+        .sub-tool.collapsed .sub-tool-content {
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .sub-tool-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .sub-sub-tool {
+            margin: 10px 0;
+            padding-left: 15px;
+            border-left: 2px solid #4ec9b0;
+        }
+
+        .sub-sub-tool-title {
+            font-size: 13px;
+            color: #ce9178;
+            margin-bottom: 8px;
+            padding-left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sub-sub-tool-title:hover {
+            color: #4ec9b0;
+        }
+
+        .sub-sub-tool.collapsed .command-list {
+            max-height: 0;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .command-list {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-left: 10px;
+        }
+
+        .command-item {
+            padding: 10px 15px;
+            background: #2d2d2d;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: 10px;
+        }
+
+        .command-item:hover {
+            background: #3a3a3a;
+            transform: translateX(3px);
+        }
+
+        .command-name {
+            font-size: 14px;
+            color: #d4d4d4;
+        }
+
+        .command-code-block {
+            display: none;
+            padding: 15px;
+            background: #1e1e1e;
+            border-top: 1px solid #3d3d3d;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 13px;
+            color: #d4d4d4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.6;
+            margin-top: 5px;
+            border-radius: 0 0 6px 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .command-code-block:hover {
+            background: #252525;
+        }
+
+        .command-code-block.copied {
+            background: #4ec9b0;
+            color: #1a1a1a;
+        }
+
+        .command-item.expanded .command-code-block {
+            display: block;
+        }
+
+        .expand-indicator {
+            display: inline-block;
+            transition: transform 0.3s;
+            margin-right: 8px;
+            color: #4ec9b0;
+            font-size: 12px;
+        }
+
+        .command-item.expanded .expand-indicator {
+            transform: rotate(90deg);
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 30px 20px;
+            border-top: 1px solid #333;
+            background: #1e1e1e;
+            border-radius: 8px;
+        }
+
+        .guide-title {
+            font-size: 16px;
+            color: #4ec9b0;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .guide-section {
+            margin-bottom: 15px;
+        }
+
+        .guide-section h4 {
+            font-size: 14px;
+            color: #569cd6;
+            margin-bottom: 8px;
+        }
+
+        .guide-section p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: #ce9178;
+            background: #2d2d2d;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 终端命令管理库</h1>
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput" placeholder="搜索命令名称或内容...">
+            </div>
+            <p class="search-hint">💡 输入关键词实时筛选，点击命令或复制按钮即可复制到剪贴板</p>
+        </header>
+
+        <div id="commandContainer">
+            <!-- ==================== 一级分类模板区 ==================== -->
+            <!-- 添加新一级分类：复制整个 category div，修改分类名称和内容即可 -->
+
+            <!-- 一级分类1：效率工具 -->
+            <div class="category" data-category="效率工具">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="category-title">
+                        <span class="toggle-btn">⊞</span>
+                        效率工具
+                    </div>
+                </div>
+                <div class="category-content">
+                    <!-- ==================== 二级工具模板区 ==================== -->
+                    <!-- 添加新二级工具：复制整个 tool div，修改工具名称和命令即可 -->
+
+                    <!-- 二级工具1：常用 -->
+                    <div class="tool">
+                        <div class="tool-title" onclick="toggleTool(this)">
+                            <span class="toggle-btn">⊞</span>
+                            cd
+                        </div>
+                        <div class="tool-content">
+                            <!-- 三级工具1：zoxide -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    zoxide（目录跳转）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：安装 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            安装
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="brew install zoxide">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>brew install zoxide</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">brew install zoxide</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="z ~/Documents">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z doc → 跳转到文档目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">z ~/Documents</div>
+                                            </div>
+
+                                            <!-- 命令2 -->
+                                            <div class="command-item" data-cmd="z ~/Code">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z code → 跳转到代码目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">z ~/Code</div>
+                                            </div>
+
+                                            <!-- 命令3 -->
+                                            <div class="command-item" data-cmd="z ~/Downloads">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z down → 跳转到下载目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">z ~/Downloads</div>
+                                            </div>
+
+                                            <!-- 命令4 -->
+                                            <div class="command-item" data-cmd="z ~/Desktop">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z desk → 跳转到桌面</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">z ~/Desktop</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具2：fzf -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    fzf（模糊搜索）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="fzf --preview='bat --color=always {}'">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>fzf 搜索+预览文件</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">fzf --preview='bat --color=always {}'</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 一级分类2：开发工具 -->
+            <div class="category" data-category="开发工具">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="category-title">
+                        <span class="toggle-btn">⊞</span>
+                        开发工具
+                    </div>
+                </div>
+                <div class="category-content">
+                    <!-- 二级工具1：常用 -->
+                    <div class="tool">
+                        <div class="tool-title" onclick="toggleTool(this)">
+                            <span class="toggle-btn">⊞</span>
+                            常用
+                        </div>
+                        <div class="tool-content">
+                            <!-- 三级工具1：git -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    git（版本控制）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="git status">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>git s → 查看状态</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">git status</div>
+                                            </div>
+
+                                            <!-- 命令2 -->
+                                            <div class="command-item" data-cmd="git log --oneline">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>git l → 精简日志</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">git log --oneline</div>
+                                            </div>
+
+                                            <!-- 命令3 -->
+                                            <div class="command-item" data-cmd="git branch -a">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>git b → 查看所有分支</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">git branch -a</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具2：docker -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    docker（容器）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="docker ps">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>docker ps → 查看运行容器</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">docker ps</div>
+                                            </div>
+
+                                            <!-- 命令2 -->
+                                            <div class="command-item" data-cmd="docker stop $(docker ps -aq)">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>docker stop all → 停止所有容器</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">docker stop $(docker ps -aq)</div>
+                                            </div>
+
+                                            <!-- 命令3 -->
+                                            <div class="command-item" data-cmd="sudo docker run -d \
+   --name homarr \
+   --restart unless-stopped \
+   -p 7575:7575 \
+   -v /var/run/docker.sock:/var/run/docker.sock \
+   -v /volume1/docker/homarr/config:/appdata/config \
+   -v /volume1/docker/homarr/icons:/appdata/icons \
+   -v /volume1/docker/homarr/data:/appdata/data \
+   -e SECRET_ENCRYPTION_KEY=你的64位密钥 \
+   -e TZ=Asia/Shanghai \
+   ghcr.io/homarr-labs/homarr:latest">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>docker run homarr → 部署Homarr应用</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">sudo docker run -d \
+   --name homarr \
+   --restart unless-stopped \
+   -p 7575:7575 \
+   -v /var/run/docker.sock:/var/run/docker.sock \
+   -v /volume1/docker/homarr/config:/appdata/config \
+   -v /volume1/docker/homarr/icons:/appdata/icons \
+   -v /volume1/docker/homarr/data:/appdata/data \
+   -e SECRET_ENCRYPTION_KEY=你的64位密钥 \
+   -e TZ=Asia/Shanghai \
+   ghcr.io/homarr-labs/homarr:latest</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 一级分类3：系统工具 -->
+            <div class="category" data-category="系统工具">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="category-title">
+                        <span class="toggle-btn">⊞</span>
+                        系统工具
+                    </div>
+                </div>
+                <div class="category-content">
+                    <!-- 二级工具1：常用 -->
+                    <div class="tool">
+                        <div class="tool-title" onclick="toggleTool(this)">
+                            <span class="toggle-btn">⊞</span>
+                            常用
+                        </div>
+                        <div class="tool-content">
+                            <!-- 三级工具1：系统监控 -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    系统监控
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="htop">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>htop → 进程监控</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">htop</div>
+                                            </div>
+
+                                            <!-- 命令2 -->
+                                            <div class="command-item" data-cmd="df -h">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>df -h → 查看磁盘占用</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">df -h</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具2：网络相关 -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    网络相关
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="lsof -i">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>lsof -i → 查看端口占用</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">lsof -i</div>
+                                            </div>
+
+                                            <!-- 命令2 -->
+                                            <div class="command-item" data-cmd="ping www.baidu.com -c 4">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>ping 测速 → 百度ping</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">ping www.baidu.com -c 4</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="noResults" class="no-results" style="display: none;">
+            😕 未找到匹配的命令，请尝试其他关键词
+        </div>
+
+        <footer>
+            <div class="guide-title">📖 快速扩展指南</div>
+            
+            <div class="guide-section">
+                <h4>① 添加新命令（五级分类）</h4>
+                <p>在对应的四级分类下，复制任意一个 <span class="highlight">command-item</span> 代码块，修改3处内容：</p>
+                <ul>
+                    <li><span class="highlight">command-name</span> 的显示名</li>
+                    <li><span class="highlight">data-cmd</span> 属性的命令内容（支持多行命令）</li>
+                    <li><span class="highlight">command-code-block</span> 中的命令内容（与 data-cmd 保持一致）</li>
+                </ul>
+                <p>点击命令项可展开/折叠查看完整命令内容。</p>
+            </div>
+
+            <div class="guide-section">
+                <h4>② 添加新四级分类</h4>
+                <p>在对应的三级工具的 <span class="highlight">sub-tool-content</span> 中，复制任意一个 <span class="highlight">sub-sub-tool</span> 代码块，修改 <span class="highlight">sub-sub-tool-title</span> 的分类名称，然后在其中添加命令即可。</p>
+            </div>
+
+            <div class="guide-section">
+                <h4>③ 添加新三级工具</h4>
+                <p>在对应的二级工具的 <span class="highlight">tool-content</span> 中，复制任意一个 <span class="highlight">sub-tool</span> 代码块，修改 <span class="highlight">sub-tool-title</span> 的工具名称，然后在 <span class="highlight">sub-tool-content</span> 中添加四级分类和命令即可。</p>
+            </div>
+
+            <div class="guide-section">
+                <h4>④ 添加新二级工具</h4>
+                <p>在对应的一级分类的 <span class="highlight">category-content</span> 中，复制任意一个 <span class="highlight">tool</span> 代码块，修改 <span class="highlight">tool-title</span> 的工具名称，然后在 <span class="highlight">tool-content</span> 中添加三级工具、四级分类和命令即可。</p>
+            </div>
+
+            <div class="guide-section">
+                <h4>⑤ 添加新一级分类</h4>
+                <p>在 <span class="highlight">commandContainer</span> 中，复制任意一个 <span class="highlight">category</span> 代码块，修改 <span class="highlight">data-category</span> 属性和分类标题，然后在其中添加二级工具、三级工具、四级分类和命令即可。</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function toggleCategory(header) {
+            const category = header.parentElement;
+            category.classList.toggle('collapsed');
+        }
+
+        function toggleTool(toolTitle) {
+            const tool = toolTitle.parentElement;
+            tool.classList.toggle('collapsed');
+        }
+
+        function toggleSubTool(subToolTitle) {
+            const subTool = subToolTitle.parentElement;
+            subTool.classList.toggle('collapsed');
+        }
+
+        function toggleSubSubTool(subSubToolTitle) {
+            const subSubTool = subSubToolTitle.parentElement;
+            subSubTool.classList.toggle('collapsed');
+        }
+
+        function toggleCommandItem(commandItem) {
+            commandItem.classList.toggle('expanded');
+        }
+
+        function copyCommand(codeBlock) {
+            const commandItem = codeBlock.parentElement;
+            const cmd = commandItem.getAttribute('data-cmd');
+            navigator.clipboard.writeText(cmd).then(() => {
+                const originalContent = codeBlock.textContent;
+                codeBlock.classList.add('copied');
+                codeBlock.textContent = '已复制!';
+                setTimeout(() => {
+                    codeBlock.classList.remove('copied');
+                    codeBlock.textContent = originalContent;
+                }, 1500);
+            }).catch(err => {
+                console.error('复制失败:', err);
+            });
+        }
+
+        function filterCommands(searchTerm) {
+            const categories = document.querySelectorAll('.category');
+            let hasResults = false;
+            
+            categories.forEach(category => {
+                const commands = category.querySelectorAll('.command-item');
+                let categoryHasMatch = false;
+                
+                commands.forEach(command => {
+                    const commandName = command.querySelector('.command-name').textContent.toLowerCase();
+                    const commandContent = command.getAttribute('data-cmd').toLowerCase();
+                    const matches = commandName.includes(searchTerm) || commandContent.includes(searchTerm);
+                    
+                    if (matches) {
+                        command.style.display = 'block';
+                        categoryHasMatch = true;
+                        hasResults = true;
+                        // 展开包含匹配命令的工具、子工具和子子工具
+                        const tool = command.closest('.tool');
+                        if (tool) {
+                            tool.classList.remove('collapsed');
+                        }
+                        const subTool = command.closest('.sub-tool');
+                        if (subTool) {
+                            subTool.classList.remove('collapsed');
+                        }
+                        const subSubTool = command.closest('.sub-sub-tool');
+                        if (subSubTool) {
+                            subSubTool.classList.remove('collapsed');
+                        }
+                    } else {
+                        command.style.display = 'none';
+                    }
+                });
+                
+                if (categoryHasMatch) {
+                    category.style.display = 'block';
+                    category.classList.remove('collapsed');
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+            
+            const noResults = document.getElementById('noResults');
+            noResults.style.display = hasResults ? 'none' : 'block';
+        }
+
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            filterCommands(searchTerm);
+        });
+
+        // 页面加载后自动折叠所有分类、工具、子工具和子子工具
+        window.addEventListener('DOMContentLoaded', () => {
+            // 折叠所有一级分类
+            const categories = document.querySelectorAll('.category');
+            categories.forEach(category => {
+                category.classList.add('collapsed');
+            });
+            
+            // 折叠所有二级工具
+            const tools = document.querySelectorAll('.tool');
+            tools.forEach(tool => {
+                tool.classList.add('collapsed');
+            });
+            
+            // 折叠所有三级工具
+            const subTools = document.querySelectorAll('.sub-tool');
+            subTools.forEach(subTool => {
+                subTool.classList.add('collapsed');
+            });
+            
+            // 折叠所有四级分类
+            const subSubTools = document.querySelectorAll('.sub-sub-tool');
+            subSubTools.forEach(subSubTool => {
+                subSubTool.classList.add('collapsed');
+            });
+        });
+    </script>
+</body>
+</html>
