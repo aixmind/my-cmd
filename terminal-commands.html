@@ -46,6 +46,28 @@
             margin-bottom: 10px;
         }
 
+        .toggle-btn-all {
+            padding: 12px 20px;
+            font-size: 16px;
+            background: #2d2d2d;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .toggle-btn-all:hover {
+            background: #3d3d3d;
+            border-color: #4ec9b0;
+        }
+
+        .toggle-btn-all.active {
+            background: #4ec9b0;
+            color: #1a1a1a;
+            border-color: #4ec9b0;
+        }
+
         .search-input {
             width: 60%;
             padding: 12px 20px;
@@ -121,7 +143,7 @@
 
         .category-content {
             padding: 0 20px;
-            max-height: 2000px;
+            max-height: 20000px;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
         }
@@ -342,6 +364,8 @@
             <h1>🚀 终端命令管理库</h1>
             <div class="search-box">
                 <input type="text" class="search-input" id="searchInput" placeholder="搜索命令名称或内容...">
+                <button class="toggle-btn-all" id="expandAllBtn" onclick="expandAll()">全部展开</button>
+                <button class="toggle-btn-all" id="collapseAllBtn" onclick="collapseAll()">全部折叠</button>
             </div>
             <p class="search-hint">💡 输入关键词实时筛选，点击命令或复制按钮即可复制到剪贴板</p>
         </header>
@@ -366,14 +390,68 @@
                     <div class="tool">
                         <div class="tool-title" onclick="toggleTool(this)">
                             <span class="toggle-btn">⊞</span>
-                            cd
+                            目录操作
                         </div>
                         <div class="tool-content">
-                            <!-- 三级工具1：zoxide -->
+                            <!-- 三级工具1：cd命令 -->
                             <div class="sub-tool">
                                 <div class="sub-tool-title" onclick="toggleSubTool(this)">
                                     <span class="toggle-btn">⊞</span>
-                                    zoxide（目录跳转）
+                                    cd
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="cd ~/Documents">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>cd ~/Documents → 跳转到文档目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">cd ~/Documents</div>
+                                            </div>
+
+                                            <!-- 命令2 -->
+                                            <div class="command-item" data-cmd="cd ~/Code">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>cd ~/Code → 跳转到代码目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">cd ~/Code</div>
+                                            </div>
+
+                                            <!-- 命令3 -->
+                                            <div class="command-item" data-cmd="cd ~/Downloads">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>cd ~/Downloads → 跳转到下载目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">cd ~/Downloads</div>
+                                            </div>
+
+                                            <!-- 命令4 -->
+                                            <div class="command-item" data-cmd="cd ~/Desktop">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>cd ~/Desktop → 跳转到桌面</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">cd ~/Desktop</div>
+                                            </div>
+
+                                            <!-- 命令5 -->
+                                            <div class="command-item" data-cmd="cd ..">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>cd .. → 回到上一级目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">cd ..</div>
+                                            </div>
+
+                                            <!-- 命令6 -->
+                                            <div class="command-item" data-cmd="cd ~">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>cd ~ → 回到主目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">cd ~</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具2：zoxide -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    zoxide
                                 </div>
                                 <div class="sub-tool-content">
                                     <!-- 四级分类：安装 -->
@@ -384,9 +462,13 @@
                                         </div>
                                         <div class="command-list">
                                             <!-- 命令1 -->
-                                            <div class="command-item" data-cmd="brew install zoxide">
+                                            <div class="command-item" data-cmd='brew install zoxide
+echo "eval \"$(zoxide init zsh)\"" >> ~/.zshrc
+source ~/.zshrc'>
                                                 <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>brew install zoxide</div>
-                                                <div class="command-code-block" onclick="copyCommand(this)">brew install zoxide</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">brew install zoxide
+echo 'eval "$(zoxide init zsh)"' >> ~/.zshrc
+source ~/.zshrc</div>
                                             </div>
                                         </div>
                                     </div>
@@ -398,34 +480,413 @@
                                         </div>
                                         <div class="command-list">
                                             <!-- 命令1 -->
-                                            <div class="command-item" data-cmd="z ~/Documents">
-                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z doc → 跳转到文档目录</div>
-                                                <div class="command-code-block" onclick="copyCommand(this)">z ~/Documents</div>
+                                            <div class="command-item" data-cmd="z doc">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z doc → 跳转到最常用的含 doc 的目录（如 ~/Documents）</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">z doc</div>
                                             </div>
 
                                             <!-- 命令2 -->
-                                            <div class="command-item" data-cmd="z ~/Code">
-                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z code → 跳转到代码目录</div>
-                                                <div class="command-code-block" onclick="copyCommand(this)">z ~/Code</div>
+                                            <div class="command-item" data-cmd="z down">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z down → 跳转到 ~/Downloads</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">z down</div>
                                             </div>
 
                                             <!-- 命令3 -->
-                                            <div class="command-item" data-cmd="z ~/Downloads">
-                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z down → 跳转到下载目录</div>
-                                                <div class="command-code-block" onclick="copyCommand(this)">z ~/Downloads</div>
+                                            <div class="command-item" data-cmd="z proj">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z proj → 跳转到项目目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">z proj</div>
                                             </div>
 
                                             <!-- 命令4 -->
-                                            <div class="command-item" data-cmd="z ~/Desktop">
-                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z desk → 跳转到桌面</div>
-                                                <div class="command-code-block" onclick="copyCommand(this)">z ~/Desktop</div>
+                                            <div class="command-item" data-cmd="z foo bar">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z foo bar → 跳转到同时含 foo 和 bar 的目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">z foo bar</div>
+                                            </div>
+
+                                            <!-- 命令5 -->
+                                            <div class="command-item" data-cmd="z ...">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z ... → 向上一级目录（等价 cd ..）</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">z ...</div>
+                                            </div>
+
+                                            <!-- 命令6 -->
+                                            <div class="command-item" data-cmd="z -">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z - → 回到上一个目录（等价 cd -）</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">z -</div>
+                                            </div>
+
+                                            <!-- 命令7 -->
+                                            <div class="command-item" data-cmd="z ~/foo">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>z ~/foo → 支持绝对路径，和 cd 用法一致</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">z ~/foo</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool">
+                        <div class="tool-title" onclick="toggleTool(this)">
+                            <span class="toggle-btn">⊞</span>
+                            文件 / 文件夹查看
+                        </div>
+                        <div class="tool-content">
+                            <!-- 三级工具1：ls -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    ls
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="ls -l">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>ls -l → 列出详细信息</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">ls -l</div>
+                                            </div>
+
+                                            <!-- 命令2 -->
+                                            <div class="command-item" data-cmd="ls -a">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>ls -a → 显示隐藏文件</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">ls -a</div>
+                                            </div>
+
+                                            <!-- 命令3 -->
+                                            <div class="command-item" data-cmd="ls -la">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>ls -la → 显示详细信息和隐藏文件</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">ls -la</div>
+                                            </div>
+
+                                            <!-- 命令4 -->
+                                            <div class="command-item" data-cmd="ls -lh">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>ls -lh → 列出详细信息（友好格式）</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">ls -lh</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 三级工具2：fzf -->
+                            <!-- 三级工具2：美化ls -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    lsd（美化ls）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="lsd">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>lsd → 美化ls</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">lsd</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具2：现代化ls -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    eza（现代化ls）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="eza">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>eza → 现代化ls</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">eza</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool">
+                        <div class="tool-title" onclick="toggleTool(this)">
+                            <span class="toggle-btn">⊞</span>
+                            创建 / 删除 / 复制 / 移动
+                        </div>
+                        <div class="tool-content">
+                            <!-- 三级工具1：文件操作 -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    文件操作
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="mkdir -p">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>mkdir -p → 创建目录（递归）</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">mkdir -p</div>
+                                            </div>
+
+                                            <!-- 命令2 -->
+                                            <div class="command-item" data-cmd="touch">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>touch → 创建文件</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">touch</div>
+                                            </div>
+
+                                            <!-- 命令3 -->
+                                            <div class="command-item" data-cmd="rm -rf">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>rm -rf → 删除文件/目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">rm -rf</div>
+                                            </div>
+
+                                            <!-- 命令4 -->
+                                            <div class="command-item" data-cmd="cp -r">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>cp -r → 复制文件/目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">cp -r</div>
+                                            </div>
+
+                                            <!-- 命令5 -->
+                                            <div class="command-item" data-cmd="mv">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>mv → 移动/重命名文件/目录</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">mv</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool">
+                        <div class="tool-title" onclick="toggleTool(this)">
+                            <span class="toggle-btn">⊞</span>
+                            文件内容查看
+                        </div>
+                        <div class="tool-content">
+                            <!-- 三级工具1：cat -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    cat（查看文件内容）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="cat">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>cat → 查看文件内容</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">cat</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具2：less -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    less（分页查看）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="less">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>less → 分页查看文件内容</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">less</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具3：head -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    head（查看前几行）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="head">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>head → 查看文件前几行</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">head</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具4：tail -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    tail（查看后几行）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="tail">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>tail → 查看文件后几行</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">tail</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool">
+                        <div class="tool-title" onclick="toggleTool(this)">
+                            <span class="toggle-btn">⊞</span>
+                            搜索与查找
+                        </div>
+                        <div class="tool-content">
+                            <!-- 三级工具1：grep -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    grep（文本搜索）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="grep">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>grep → 文本搜索</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">grep</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具2：find -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    find（文件搜索）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="find">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>find → 文件搜索</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">find</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具3：fd -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    fd（find命令替代品）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="fd">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>fd → find命令替代品</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">fd</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具2：代码搜索神器 -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    ripgrep（代码搜索神器）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="ripgrep">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>ripgrep → 代码搜索神器</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">ripgrep</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="sub-tool">
                                 <div class="sub-tool-title" onclick="toggleSubTool(this)">
                                     <span class="toggle-btn">⊞</span>
@@ -443,6 +904,315 @@
                                             <div class="command-item" data-cmd="fzf --preview='bat --color=always {}'">
                                                 <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>fzf 搜索+预览文件</div>
                                                 <div class="command-code-block" onclick="copyCommand(this)">fzf --preview='bat --color=always {}'</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 二级工具：进程与系统 -->
+                    <div class="tool">
+                        <div class="tool-title" onclick="toggleTool(this)">
+                            <span class="toggle-btn">⊞</span>
+                            进程与系统
+                        </div>
+                        <div class="tool-content">
+                            <!-- 三级工具1：ps -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    ps（进程查看）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="ps aux">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>ps aux → 查看所有进程</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">ps aux</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具2：top -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    top（系统监控）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="top">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>top → 实时系统监控</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">top</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具3：kill -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    kill（进程管理）
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="kill -9">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>kill -9 → 强制终止进程</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">kill -9</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 二级工具2：比对 -->
+                    <div class="tool">
+                        <div class="tool-title" onclick="toggleTool(this)">
+                            <span class="toggle-btn">⊞</span>
+                            比对
+                        </div>
+                        <div class="tool-content">
+                            <!-- 三级工具1：JSON对比工具 -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    JSON对比工具
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="jd">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>jd → JSON对比工具</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">jd</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 二级工具3：管理 -->
+                    <div class="tool">
+                        <div class="tool-title" onclick="toggleTool(this)">
+                            <span class="toggle-btn">⊞</span>
+                            管理
+                        </div>
+                        <div class="tool-content">
+                            <!-- 三级工具1：配置管理 -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    配置管理
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            chezmo
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="chezmo">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>chezmo → dotfiles配置管理</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">chezmo</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具2：软件包管理 -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    软件包管理
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            Homebrew
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="brew">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>Homebrew → 包管理器</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">brew</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具3：文件管理 -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    文件管理
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            yazi
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="yazi">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>yazi → 终端文件管理器</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">yazi</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具4：系统工具 -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    系统工具
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            duti
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="duti">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>duti → 配置文件类型和URL协议关联</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">duti</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 二级工具4：监控 -->
+                    <div class="tool">
+                        <div class="tool-title" onclick="toggleTool(this)">
+                            <span class="toggle-btn">⊞</span>
+                            监控
+                        </div>
+                        <div class="tool-content">
+                            <!-- 三级工具1：端资源监控 -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    端资源监控
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="btop">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>btop → 端资源监控</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">btop</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 二级工具5：清理 -->
+                    <div class="tool">
+                        <div class="tool-title" onclick="toggleTool(this)">
+                            <span class="toggle-btn">⊞</span>
+                            清理
+                        </div>
+                        <div class="tool-content">
+                            <!-- 三级工具1：软件卸载 -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    软件卸载
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="mole">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>mole → 软件卸载</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">mole</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 三级工具2：磁盘清理 -->
+                            <div class="sub-tool">
+                                <div class="sub-tool-title" onclick="toggleSubTool(this)">
+                                    <span class="toggle-btn">⊞</span>
+                                    磁盘清理
+                                </div>
+                                <div class="sub-tool-content">
+                                    <!-- 四级分类：常用 -->
+                                    <div class="sub-sub-tool">
+                                        <div class="sub-sub-tool-title" onclick="toggleSubSubTool(this)">
+                                            <span class="toggle-btn">⊞</span>
+                                            常用
+                                        </div>
+                                        <div class="command-list">
+                                            <!-- 命令1 -->
+                                            <div class="command-item" data-cmd="ncdu">
+                                                <div class="command-name" onclick="toggleCommandItem(this.parentElement)"><span class="expand-indicator">▶</span>ncdu → 磁盘清理</div>
+                                                <div class="command-code-block" onclick="copyCommand(this)">ncdu</div>
                                             </div>
                                         </div>
                                     </div>
@@ -644,6 +1414,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
 
         <div id="noResults" class="no-results" style="display: none;">
@@ -687,6 +1459,58 @@
     </div>
 
     <script>
+        function expandAll() {
+            // 展开所有一级分类
+            const categories = document.querySelectorAll('.category');
+            categories.forEach(category => {
+                category.classList.remove('collapsed');
+            });
+
+            // 展开所有二级工具
+            const tools = document.querySelectorAll('.tool');
+            tools.forEach(tool => {
+                tool.classList.remove('collapsed');
+            });
+
+            // 展开所有三级工具
+            const subTools = document.querySelectorAll('.sub-tool');
+            subTools.forEach(subTool => {
+                subTool.classList.remove('collapsed');
+            });
+
+            // 展开所有四级分类
+            const subSubTools = document.querySelectorAll('.sub-sub-tool');
+            subSubTools.forEach(subSubTool => {
+                subSubTool.classList.remove('collapsed');
+            });
+        }
+
+        function collapseAll() {
+            // 折叠所有一级分类
+            const categories = document.querySelectorAll('.category');
+            categories.forEach(category => {
+                category.classList.add('collapsed');
+            });
+
+            // 折叠所有二级工具
+            const tools = document.querySelectorAll('.tool');
+            tools.forEach(tool => {
+                tool.classList.add('collapsed');
+            });
+
+            // 折叠所有三级工具
+            const subTools = document.querySelectorAll('.sub-tool');
+            subTools.forEach(subTool => {
+                subTool.classList.add('collapsed');
+            });
+
+            // 折叠所有四级分类
+            const subSubTools = document.querySelectorAll('.sub-sub-tool');
+            subSubTools.forEach(subSubTool => {
+                subSubTool.classList.add('collapsed');
+            });
+        }
+
         function toggleCategory(header) {
             const category = header.parentElement;
             category.classList.toggle('collapsed');
@@ -780,32 +1604,8 @@
             filterCommands(searchTerm);
         });
 
-        // 页面加载后自动折叠所有分类、工具、子工具和子子工具
-        window.addEventListener('DOMContentLoaded', () => {
-            // 折叠所有一级分类
-            const categories = document.querySelectorAll('.category');
-            categories.forEach(category => {
-                category.classList.add('collapsed');
-            });
-            
-            // 折叠所有二级工具
-            const tools = document.querySelectorAll('.tool');
-            tools.forEach(tool => {
-                tool.classList.add('collapsed');
-            });
-            
-            // 折叠所有三级工具
-            const subTools = document.querySelectorAll('.sub-tool');
-            subTools.forEach(subTool => {
-                subTool.classList.add('collapsed');
-            });
-            
-            // 折叠所有四级分类
-            const subSubTools = document.querySelectorAll('.sub-sub-tool');
-            subSubTools.forEach(subSubTool => {
-                subSubTool.classList.add('collapsed');
-            });
-        });
+
+
     </script>
 </body>
 </html>
