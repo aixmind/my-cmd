@@ -90,6 +90,47 @@
             margin-top: 8px;
         }
 
+        .tag-container {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag-title {
+            font-size: 14px;
+            color: #888;
+            margin-right: 10px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            background: #2d2d2d;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: #e0e0e0;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .tag:hover {
+            background: #3d3d3d;
+            border-color: #4ec9b0;
+            color: #4ec9b0;
+        }
+
+        .tag:active {
+            transform: translateY(1px);
+        }
+
         .no-results {
             text-align: center;
             padding: 40px;
@@ -360,7 +401,7 @@
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="header">
             <h1>🚀 终端命令管理库</h1>
             <div class="search-box">
                 <input type="text" class="search-input" id="searchInput" placeholder="搜索命令名称或内容...">
@@ -368,7 +409,54 @@
                 <button class="toggle-btn-all" id="collapseAllBtn" onclick="collapseAll()">全部折叠</button>
             </div>
             <p class="search-hint">💡 输入关键词实时筛选，点击命令或复制按钮即可复制到剪贴板</p>
-        </header>
+            <div class="tag-container">
+                <div class="tag-title">标签：</div>
+                <div class="tags">
+                    <span class="tag" onclick="jumpToTool('目录操作')">目录操作</span>
+                    <span class="tag" onclick="jumpToTool('文件 / 文件夹查看')">文件 / 文件夹查看</span>
+                    <span class="tag" onclick="jumpToTool('创建 / 删除 / 复制 / 移动')">创建 / 删除 / 复制 / 移动</span>
+                    <span class="tag" onclick="jumpToTool('文件内容查看')">文件内容查看</span>
+                    <span class="tag" onclick="jumpToTool('搜索与查找')">搜索与查找</span>
+                    <span class="tag" onclick="jumpToTool('进程与系统')">进程与系统</span>
+                    <span class="tag" onclick="jumpToTool('比对')">比对</span>
+                    <span class="tag" onclick="jumpToTool('管理')">管理</span>
+                    <span class="tag" onclick="jumpToTool('监控')">监控</span>
+                    <span class="tag" onclick="jumpToTool('清理')">清理</span>
+                    <span class="tag" onclick="jumpToTool('常用')">常用</span>
+                    <!-- 三级工具标签 -->
+                    <span class="tag" onclick="jumpToTool('cd')">cd</span>
+                    <span class="tag" onclick="jumpToTool('zoxide')">zoxide</span>
+                    <span class="tag" onclick="jumpToTool('ls')">ls</span>
+                    <span class="tag" onclick="jumpToTool('lsd（美化ls）')">lsd（美化ls）</span>
+                    <span class="tag" onclick="jumpToTool('eza（现代化ls）')">eza（现代化ls）</span>
+                    <span class="tag" onclick="jumpToTool('文件操作')">文件操作</span>
+                    <span class="tag" onclick="jumpToTool('cat（查看文件内容）')">cat（查看文件内容）</span>
+                    <span class="tag" onclick="jumpToTool('less（分页查看）')">less（分页查看）</span>
+                    <span class="tag" onclick="jumpToTool('head（查看前几行）')">head（查看前几行）</span>
+                    <span class="tag" onclick="jumpToTool('tail（查看后几行）')">tail（查看后几行）</span>
+                    <span class="tag" onclick="jumpToTool('grep（文本搜索）')">grep（文本搜索）</span>
+                    <span class="tag" onclick="jumpToTool('find（文件搜索）')">find（文件搜索）</span>
+                    <span class="tag" onclick="jumpToTool('fd（find命令替代品）')">fd（find命令替代品）</span>
+                    <span class="tag" onclick="jumpToTool('ripgrep（代码搜索神器）')">ripgrep（代码搜索神器）</span>
+                    <span class="tag" onclick="jumpToTool('fzf（模糊搜索）')">fzf（模糊搜索）</span>
+                    <span class="tag" onclick="jumpToTool('ps（进程查看）')">ps（进程查看）</span>
+                    <span class="tag" onclick="jumpToTool('top（系统监控）')">top（系统监控）</span>
+                    <span class="tag" onclick="jumpToTool('kill（进程管理）')">kill（进程管理）</span>
+                    <span class="tag" onclick="jumpToTool('JSON对比工具')">JSON对比工具</span>
+                    <span class="tag" onclick="jumpToTool('配置管理')">配置管理</span>
+                    <span class="tag" onclick="jumpToTool('软件包管理')">软件包管理</span>
+                    <span class="tag" onclick="jumpToTool('文件管理')">文件管理</span>
+                    <span class="tag" onclick="jumpToTool('系统工具')">系统工具</span>
+                    <span class="tag" onclick="jumpToTool('端资源监控')">端资源监控</span>
+                    <span class="tag" onclick="jumpToTool('软件卸载')">软件卸载</span>
+                    <span class="tag" onclick="jumpToTool('磁盘清理')">磁盘清理</span>
+                    <span class="tag" onclick="jumpToTool('git（版本控制）')">git（版本控制）</span>
+                    <span class="tag" onclick="jumpToTool('docker（容器）')">docker（容器）</span>
+                    <span class="tag" onclick="jumpToTool('系统监控')">系统监控</span>
+                    <span class="tag" onclick="jumpToTool('网络相关')">网络相关</span>
+                </div>
+            </div>
+        </div>
 
         <div id="commandContainer">
             <!-- ==================== 一级分类模板区 ==================== -->
@@ -1459,6 +1547,75 @@ source ~/.zshrc</div>
     </div>
 
     <script>
+        function jumpToTool(targetName) {
+            // 找到目标工具或分类
+            const toolTitles = document.querySelectorAll('.tool-title');
+            const subToolTitles = document.querySelectorAll('.sub-tool-title');
+            let targetElement = null;
+            
+            // 先查找二级工具
+            toolTitles.forEach(tool => {
+                // 只获取工具标题文本，忽略按钮内容
+                const textContent = Array.from(tool.childNodes)
+                    .filter(node => node.nodeType === Node.TEXT_NODE)
+                    .map(node => node.textContent.trim())
+                    .join('')
+                    .trim();
+                
+                if (textContent === targetName) {
+                    targetElement = tool;
+                }
+            });
+            
+            // 如果没找到，查找三级工具
+            if (!targetElement) {
+                subToolTitles.forEach(subTool => {
+                    // 只获取工具标题文本，忽略按钮内容
+                    const textContent = Array.from(subTool.childNodes)
+                        .filter(node => node.nodeType === Node.TEXT_NODE)
+                        .map(node => node.textContent.trim())
+                        .join('')
+                        .trim();
+                    
+                    if (textContent === targetName) {
+                        targetElement = subTool;
+                    }
+                });
+            }
+            
+            if (!targetElement) {
+                console.error('未找到目标:', targetName);
+                return;
+            }
+            
+            // 展开包含目标元素的所有分类和工具
+            let currentElement = targetElement;
+            while (currentElement && currentElement !== document.body) {
+                if (currentElement.classList.contains('category')) {
+                    currentElement.classList.remove('collapsed');
+                }
+                if (currentElement.classList.contains('tool')) {
+                    currentElement.classList.remove('collapsed');
+                }
+                if (currentElement.classList.contains('sub-tool')) {
+                    currentElement.classList.remove('collapsed');
+                }
+                if (currentElement.classList.contains('sub-sub-tool')) {
+                    currentElement.classList.remove('collapsed');
+                }
+                currentElement = currentElement.parentElement;
+            }
+            
+            // 定位到目标元素
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // 高亮目标工具
+            targetElement.style.color = '#4ec9b0';
+            setTimeout(() => {
+                targetElement.style.color = '';
+            }, 2000);
+        }
+
         function expandAll() {
             // 展开所有一级分类
             const categories = document.querySelectorAll('.category');
