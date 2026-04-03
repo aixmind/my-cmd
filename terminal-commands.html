@@ -175,11 +175,18 @@
             transition: transform 0.3s;
         }
 
+        .category .toggle-btn,
+        .tool .toggle-btn,
+        .sub-tool .toggle-btn,
+        .sub-sub-tool .toggle-btn {
+            transform: rotate(90deg);
+        }
+
         .category.collapsed .toggle-btn,
         .tool.collapsed .toggle-btn,
         .sub-tool.collapsed .toggle-btn,
         .sub-sub-tool.collapsed .toggle-btn {
-            transform: rotate(-90deg);
+            transform: rotate(0deg);
         }
 
         .category-content {
@@ -453,7 +460,6 @@
             <div class="search-box">
                 <input type="text" class="search-input" id="searchInput" placeholder="搜索命令名称或内容...">
                 <button class="toggle-btn-all" id="expandAllBtn" onclick="expandAll()">全部展开</button>
-                <button class="toggle-btn-all" id="collapseAllBtn" onclick="collapseAll()">全部折叠</button>
             </div>
             <p class="search-hint">💡 输入关键词实时筛选，点击命令或复制按钮即可复制到剪贴板</p>
             <div class="tag-container">
@@ -522,25 +528,25 @@
         </div>
 
         <div id="commandContainer">
-            <div class="category" data-category="效率工具">
+            <div class="category collapsed" data-category="效率工具">
                 <div class="category-header" onclick="toggleCategory(this)">
                     <div class="category-title">
-                        <span class="toggle-btn">⊞</span>
+                        <span class="toggle-btn">▶</span>
                         效率工具
                     </div>
                 </div>
                 <div class="category-content">
     
-                <div class="tool">
+                <div class="tool collapsed">
                     <div class="tool-title" onclick="toggleTool(this)">
-                        <span class="toggle-btn">⊞</span>
+                        <span class="toggle-btn">▶</span>
                         目录操作
                     </div>
                     <div class="tool-content">
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 pwd
                             </div>
                             <div class="sub-tool-content">
@@ -576,9 +582,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 cd
                             </div>
                             <div class="sub-tool-content">
@@ -662,9 +668,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 zoxide
                             </div>
                             <div class="sub-tool-content">
@@ -700,9 +706,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 ls
                             </div>
                             <div class="sub-tool-content">
@@ -762,9 +768,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 lsd
                             </div>
                             <div class="sub-tool-content">
@@ -920,9 +926,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 eza
                             </div>
                             <div class="sub-tool-content">
@@ -1081,16 +1087,16 @@
                     </div>
                 </div>
     
-                <div class="tool">
+                <div class="tool collapsed">
                     <div class="tool-title" onclick="toggleTool(this)">
-                        <span class="toggle-btn">⊞</span>
+                        <span class="toggle-btn">▶</span>
                         文件操作
                     </div>
                     <div class="tool-content">
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 mkdir
                             </div>
                             <div class="sub-tool-content">
@@ -1150,9 +1156,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 touch
                             </div>
                             <div class="sub-tool-content">
@@ -1236,9 +1242,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 cp
                             </div>
                             <div class="sub-tool-content">
@@ -1334,9 +1340,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 mv
                             </div>
                             <div class="sub-tool-content">
@@ -1420,9 +1426,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 mmv
                             </div>
                             <div class="sub-tool-content">
@@ -1518,9 +1524,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 rm
                             </div>
                             <div class="sub-tool-content">
@@ -1604,9 +1610,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 sed
                             </div>
                             <div class="sub-tool-content">
@@ -1726,9 +1732,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 sd
                             </div>
                             <div class="sub-tool-content">
@@ -1824,9 +1830,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 awk
                             </div>
                             <div class="sub-tool-content">
@@ -1946,9 +1952,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 xargs
                             </div>
                             <div class="sub-tool-content">
@@ -2068,9 +2074,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 chmod
                             </div>
                             <div class="sub-tool-content">
@@ -2166,9 +2172,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 chown
                             </div>
                             <div class="sub-tool-content">
@@ -2240,9 +2246,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 tar
                             </div>
                             <div class="sub-tool-content">
@@ -2362,9 +2368,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 zip/unzip
                             </div>
                             <div class="sub-tool-content">
@@ -2484,9 +2490,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 cat
                             </div>
                             <div class="sub-tool-content">
@@ -2570,9 +2576,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 bat
                             </div>
                             <div class="sub-tool-content">
@@ -2668,9 +2674,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 less
                             </div>
                             <div class="sub-tool-content">
@@ -2874,9 +2880,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 most
                             </div>
                             <div class="sub-tool-content">
@@ -3104,9 +3110,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 head
                             </div>
                             <div class="sub-tool-content">
@@ -3178,9 +3184,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 tail
                             </div>
                             <div class="sub-tool-content">
@@ -3264,9 +3270,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 diff
                             </div>
                             <div class="sub-tool-content">
@@ -3374,9 +3380,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 ln
                             </div>
                             <div class="sub-tool-content">
@@ -3460,9 +3466,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 column
                             </div>
                             <div class="sub-tool-content">
@@ -3546,9 +3552,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 jq
                             </div>
                             <div class="sub-tool-content">
@@ -3668,9 +3674,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 yq
                             </div>
                             <div class="sub-tool-content">
@@ -3781,16 +3787,16 @@
                     </div>
                 </div>
     
-                <div class="tool">
+                <div class="tool collapsed">
                     <div class="tool-title" onclick="toggleTool(this)">
-                        <span class="toggle-btn">⊞</span>
+                        <span class="toggle-btn">▶</span>
                         搜索查找
                     </div>
                     <div class="tool-content">
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 find
                             </div>
                             <div class="sub-tool-content">
@@ -3946,9 +3952,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 fd
                             </div>
                             <div class="sub-tool-content">
@@ -4080,9 +4086,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 fzf
                             </div>
                             <div class="sub-tool-content">
@@ -4262,9 +4268,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 grep
                             </div>
                             <div class="sub-tool-content">
@@ -4408,9 +4414,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 ripgrep
                             </div>
                             <div class="sub-tool-content">
@@ -4614,9 +4620,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 which
                             </div>
                             <div class="sub-tool-content">
@@ -4679,16 +4685,16 @@
                     </div>
                 </div>
     
-                <div class="tool">
+                <div class="tool collapsed">
                     <div class="tool-title" onclick="toggleTool(this)">
-                        <span class="toggle-btn">⊞</span>
+                        <span class="toggle-btn">▶</span>
                         进程管理
                     </div>
                     <div class="tool-content">
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 ps
                             </div>
                             <div class="sub-tool-content">
@@ -4820,9 +4826,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 top
                             </div>
                             <div class="sub-tool-content">
@@ -5014,9 +5020,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 btop
                             </div>
                             <div class="sub-tool-content">
@@ -5232,9 +5238,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 kill
                             </div>
                             <div class="sub-tool-content">
@@ -5306,9 +5312,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 pkill
                             </div>
                             <div class="sub-tool-content">
@@ -5383,16 +5389,16 @@
                     </div>
                 </div>
     
-                <div class="tool">
+                <div class="tool collapsed">
                     <div class="tool-title" onclick="toggleTool(this)">
-                        <span class="toggle-btn">⊞</span>
+                        <span class="toggle-btn">▶</span>
                         系统信息
                     </div>
                     <div class="tool-content">
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 uname
                             </div>
                             <div class="sub-tool-content">
@@ -5500,9 +5506,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 df
                             </div>
                             <div class="sub-tool-content">
@@ -5586,9 +5592,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 du
                             </div>
                             <div class="sub-tool-content">
@@ -5672,9 +5678,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 free
                             </div>
                             <div class="sub-tool-content">
@@ -5761,16 +5767,16 @@
                     </div>
                 </div>
     
-                <div class="tool">
+                <div class="tool collapsed">
                     <div class="tool-title" onclick="toggleTool(this)">
-                        <span class="toggle-btn">⊞</span>
+                        <span class="toggle-btn">▶</span>
                         网络工具
                     </div>
                     <div class="tool-content">
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 ping
                             </div>
                             <div class="sub-tool-content">
@@ -5854,9 +5860,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 curl
                             </div>
                             <div class="sub-tool-content">
@@ -5988,9 +5994,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 wget
                             </div>
                             <div class="sub-tool-content">
@@ -6086,9 +6092,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 ifconfig
                             </div>
                             <div class="sub-tool-content">
@@ -6196,9 +6202,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 netstat
                             </div>
                             <div class="sub-tool-content">
@@ -6306,9 +6312,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 nslookup
                             </div>
                             <div class="sub-tool-content">
@@ -6404,9 +6410,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 dig
                             </div>
                             <div class="sub-tool-content">
@@ -6514,9 +6520,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 ssh
                             </div>
                             <div class="sub-tool-content">
@@ -6624,9 +6630,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 scp
                             </div>
                             <div class="sub-tool-content">
@@ -6710,9 +6716,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 rsync
                             </div>
                             <div class="sub-tool-content">
@@ -6808,9 +6814,9 @@
                             </div>
                         </div>
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 sftp
                             </div>
                             <div class="sub-tool-content">
@@ -6861,16 +6867,16 @@
                     </div>
                 </div>
     
-                <div class="tool">
+                <div class="tool collapsed">
                     <div class="tool-title" onclick="toggleTool(this)">
-                        <span class="toggle-btn">⊞</span>
+                        <span class="toggle-btn">▶</span>
                         基础命令
                     </div>
                     <div class="tool-content">
     
-                        <div class="sub-tool">
+                        <div class="sub-tool collapsed">
                             <div class="sub-tool-title" onclick="toggleSubTool(this)">
-                                <span class="toggle-btn">⊞</span>
+                                <span class="toggle-btn">▶</span>
                                 echo
                             </div>
                             <div class="sub-tool-content">
