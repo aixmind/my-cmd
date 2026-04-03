@@ -751,68 +751,68 @@
             "desc": "文件查看",
             "options": [
               {
-                "option": "（文件操作）less 文件名",
-                "option_desc": "分页查看文件"
+                "option": "less 文件名",
+                "option_desc": "（文件操作）分页查看文件"
               },
               {
-                "option": "（文件操作）less -N 文件名",
-                "option_desc": "显示行号"
+                "option": "less -N 文件名",
+                "option_desc": "（文件操作）显示行号"
               },
               {
-                "option": "（文件操作）less -f 文件名",
-                "option_desc": "强制查看"
+                "option": "less -f 文件名",
+                "option_desc": "（文件操作）强制查看"
               },
               {
-                "option": "（文件操作）命令 | less",
-                "option_desc": "管道输出分页查看"
+                "option": "命令 | less",
+                "option_desc": "（文件操作）管道输出分页查看"
               },
               {
-                "option": "（浏览操作）上下箭头 / j/k",
-                "option_desc": "上下滚动"
+                "option": "上下箭头 / j/k",
+                "option_desc": "（浏览操作）上下滚动"
               },
               {
-                "option": "（浏览操作）空格 / PageDown",
-                "option_desc": "下一页"
+                "option": "空格 / PageDown",
+                "option_desc": "（浏览操作）下一页"
               },
               {
-                "option": "（浏览操作）b / PageUp",
-                "option_desc": "上一页"
+                "option": "b / PageUp",
+                "option_desc": "（浏览操作）上一页"
               },
               {
-                "option": "（浏览操作）g",
-                "option_desc": "跳到文件开头"
+                "option": "g",
+                "option_desc": "（浏览操作）跳到文件开头"
               },
               {
-                "option": "（浏览操作）G",
-                "option_desc": "跳到文件末尾"
+                "option": "G",
+                "option_desc": "（浏览操作）跳到文件末尾"
               },
               {
-                "option": "（搜索）/关键词",
-                "option_desc": "向下搜索"
+                "option": "/关键词",
+                "option_desc": "（搜索）向下搜索"
               },
               {
-                "option": "（搜索）?关键词",
-                "option_desc": "向上搜索"
+                "option": "?关键词",
+                "option_desc": "（搜索）向上搜索"
               },
               {
-                "option": "（搜索）n",
-                "option_desc": "下一个匹配"
+                "option": "n",
+                "option_desc": "（搜索）下一个匹配"
               },
               {
-                "option": "（搜索）N",
-                "option_desc": "上一个匹配"
+                "option": "N",
+                "option_desc": "（搜索）上一个匹配"
               },
               {
-                "option": "（其他）=",
-                "option_desc": "显示当前位置信息"
+                "option": "=",
+                "option_desc": "（其他）显示当前位置信息"
               },
               {
-                "option": "（其他）F",
-                "option_desc": "实时刷新，类似 tail -f"
+                "option": "F",
+                "option_desc": "（其他）实时刷新，类似 tail -f"
               },
               {
-                "option": "（其他）q",
-                "option_desc": "退出 less"
+                "option": "q",
+                "option_desc": "（其他）退出 less"
               }
             ]
           },
@@ -821,76 +821,76 @@
             "desc": "文件查看",
             "options": [
               {
-                "option": "（文件操作）most 文件名",
-                "option_desc": "分页查看文件"
+                "option": "most 文件名",
+                "option_desc": "（文件操作）分页查看文件"
               },
               {
-                "option": "（文件操作）most +n 文件名",
-                "option_desc": "从第 n 行开始查看"
+                "option": "most +n 文件名",
+                "option_desc": "（文件操作）从第 n 行开始查看"
               },
               {
-                "option": "（文件操作）命令 | most",
-                "option_desc": "管道输出分页查看"
+                "option": "命令 | most",
+                "option_desc": "（文件操作）管道输出分页查看"
               },
               {
-                "option": "（浏览操作）下箭头 / j",
-                "option_desc": "向下一行"
+                "option": "下箭头 / j",
+                "option_desc": "（浏览操作）向下一行"
               },
               {
-                "option": "（浏览操作）上箭头 / k",
-                "option_desc": "向上一行"
+                "option": "上箭头 / k",
+                "option_desc": "（浏览操作）向上一行"
               },
               {
-                "option": "（浏览操作）空格 / PageDn",
-                "option_desc": "下一页"
+                "option": "空格 / PageDn",
+                "option_desc": "（浏览操作）下一页"
               },
               {
-                "option": "（浏览操作）b / PageUp",
-                "option_desc": "上一页"
+                "option": "b / PageUp",
+                "option_desc": "（浏览操作）上一页"
               },
               {
-                "option": "（浏览操作）g",
-                "option_desc": "跳转到首行"
+                "option": "g",
+                "option_desc": "（浏览操作）跳转到首行"
               },
               {
-                "option": "（浏览操作）G",
-                "option_desc": "跳转到末行"
+                "option": "G",
+                "option_desc": "（浏览操作）跳转到末行"
               },
               {
-                "option": "（浏览操作）%",
-                "option_desc": "跳转到文件末尾"
+                "option": "%",
+                "option_desc": "（浏览操作）跳转到文件末尾"
               },
               {
-                "option": "（搜索操作）/关键词",
-                "option_desc": "向下搜索"
+                "option": "/关键词",
+                "option_desc": "（搜索操作）向下搜索"
               },
               {
-                "option": "（搜索操作）关键词",
-                "option_desc": "向上搜索"
+                "option": "关键词",
+                "option_desc": "（搜索操作）向上搜索"
               },
               {
-                "option": "（搜索操作）n",
-                "option_desc": "下一个匹配"
+                "option": "n",
+                "option_desc": "（搜索操作）下一个匹配"
               },
               {
-                "option": "（搜索操作）N",
-                "option_desc": "上一个匹配"
+                "option": "N",
+                "option_desc": "（搜索操作）上一个匹配"
               },
               {
-                "option": "（分屏操作）Ctrl+x 2",
-                "option_desc": "横向分屏"
+                "option": "Ctrl+x 2",
+                "option_desc": "（分屏操作）横向分屏"
               },
               {
-                "option": "（分屏操作）Ctrl+x 1",
-                "option_desc": "回到单屏"
+                "option": "Ctrl+x 1",
+                "option_desc": "（分屏操作）回到单屏"
               },
               {
-                "option": "（分屏操作）Ctrl+o",
-                "option_desc": "切换窗口"
+                "option": "Ctrl+o",
+                "option_desc": "（分屏操作）切换窗口"
               },
               {
-                "option": "（其他操作）q",
-                "option_desc": "退出 most"
+                "option": "q",
+                "option_desc": "（其他操作）退出 most"
               }
             ]
           },
@@ -1238,60 +1238,60 @@
             "desc": "交互式模糊搜索，跨平台",
             "options": [
               {
-                "option": "（交互式查找）fzf",
-                "option_desc": "模糊搜索，交互式选择"
+                "option": "fzf",
+                "option_desc": "（交互式查找）模糊搜索，交互式选择"
               },
               {
-                "option": "（交互式查找）fzf",
-                "option_desc": "直接启动，搜索当前目录所有文件"
+                "option": "fzf",
+                "option_desc": "（交互式查找）直接启动，搜索当前目录所有文件"
               },
               {
-                "option": "（交互式查找）fzf --preview 'cat {}'",
-                "option_desc": "带预览文件内容"
+                "option": "fzf --preview 'cat {}'",
+                "option_desc": "（交互式查找）带预览文件内容"
               },
               {
-                "option": "（交互式查找）fzf --height 40%",
-                "option_desc": "设置高度"
+                "option": "fzf --height 40%",
+                "option_desc": "（交互式查找）设置高度"
               },
               {
-                "option": "（交互式查找）fzf --reverse",
-                "option_desc": "从上往下显示"
+                "option": "fzf --reverse",
+                "option_desc": "（交互式查找）从上往下显示"
               },
               {
-                "option": "（配合常用命令）cd $(fzf)",
-                "option_desc": "进入选中目录"
+                "option": "cd $(fzf)",
+                "option_desc": "（配合常用命令）进入选中目录"
               },
               {
-                "option": "（配合常用命令）vim $(fzf)",
-                "option_desc": "用 vim 打开选中文件"
+                "option": "vim $(fzf)",
+                "option_desc": "（配合常用命令）用 vim 打开选中文件"
               },
               {
-                "option": "（配合常用命令）ls | fzf",
-                "option_desc": "管道内容模糊搜索"
+                "option": "ls | fzf",
+                "option_desc": "（配合常用命令）管道内容模糊搜索"
               },
               {
-                "option": "（历史命令）Ctrl+R",
-                "option_desc": "打开历史命令搜索，最常用"
+                "option": "Ctrl+R",
+                "option_desc": "（历史命令）打开历史命令搜索，最常用"
               },
               {
-                "option": "（目录跳转）Alt+C",
-                "option_desc": "进入某目录"
+                "option": "Alt+C",
+                "option_desc": "（目录跳转）进入某目录"
               },
               {
-                "option": "（文件名补全）Ctrl+T",
-                "option_desc": "插入选中文件名"
+                "option": "Ctrl+T",
+                "option_desc": "（文件名补全）插入选中文件名"
               },
               {
-                "option": "（进程查找）ps aux | fzf",
-                "option_desc": "搜索并选择进程"
+                "option": "ps aux | fzf",
+                "option_desc": "（进程查找）搜索并选择进程"
               },
               {
-                "option": "（Git 分支）git branch | fzf",
-                "option_desc": "选择分支"
+                "option": "git branch | fzf",
+                "option_desc": "（Git 分支）选择分支"
               },
               {
-                "option": "（预览目录）fzf --preview 'ls -l {}'",
-                "option_desc": ""
+                "option": "fzf --preview 'ls -l {}'",
+                "option_desc": "（预览目录）"
               }
             ]
           },
@@ -1350,68 +1350,68 @@
             "desc": "grep 增强，代码搜索，跨平台",
             "options": [
               {
-                "option": "（文本搜索）rg",
-                "option_desc": "ripgrep，极速搜索"
+                "option": "rg",
+                "option_desc": "（文本搜索）ripgrep，极速搜索"
               },
               {
-                "option": "（文本搜索）rg 关键词",
-                "option_desc": "当前目录递归搜索"
+                "option": "rg 关键词",
+                "option_desc": "（文本搜索）当前目录递归搜索"
               },
               {
-                "option": "（文本搜索）rg -i 关键词",
-                "option_desc": "忽略大小写"
+                "option": "rg -i 关键词",
+                "option_desc": "（文本搜索）忽略大小写"
               },
               {
-                "option": "（文本搜索）rg -n keyword",
-                "option_desc": "显示行号"
+                "option": "rg -n keyword",
+                "option_desc": "（文本搜索）显示行号"
               },
               {
-                "option": "（文本搜索）rg -v 关键词",
-                "option_desc": "反向匹配，排除"
+                "option": "rg -v 关键词",
+                "option_desc": "（文本搜索）反向匹配，排除"
               },
               {
-                "option": "（文本搜索）rg -w 关键词",
-                "option_desc": "全词匹配"
+                "option": "rg -w 关键词",
+                "option_desc": "（文本搜索）全词匹配"
               },
               {
-                "option": "（文本搜索）rg -c 关键词",
-                "option_desc": "只显示匹配计数"
+                "option": "rg -c 关键词",
+                "option_desc": "（文本搜索）只显示匹配计数"
               },
               {
-                "option": "（文本搜索）rg -l 关键词",
-                "option_desc": "只显示文件名"
+                "option": "rg -l 关键词",
+                "option_desc": "（文本搜索）只显示文件名"
               },
               {
-                "option": "（文本搜索）rg -F '字符串'",
-                "option_desc": "固定字符串，不按正则"
+                "option": "rg -F '字符串'",
+                "option_desc": "（文本搜索）固定字符串，不按正则"
               },
               {
-                "option": "（文本搜索）rg -e '正则'",
-                "option_desc": "显式正则"
+                "option": "rg -e '正则'",
+                "option_desc": "（文本搜索）显式正则"
               },
               {
-                "option": "（文本搜索）rg -t md 关键词",
-                "option_desc": "只搜指定类型文件"
+                "option": "rg -t md 关键词",
+                "option_desc": "（文本搜索）只搜指定类型文件"
               },
               {
-                "option": "（文本搜索）rg -T json 关键词",
-                "option_desc": "排除某类型"
+                "option": "rg -T json 关键词",
+                "option_desc": "（文本搜索）排除某类型"
               },
               {
-                "option": "（文本搜索）rg -u",
-                "option_desc": "不忽略隐藏文件/gitignore"
+                "option": "rg -u",
+                "option_desc": "（文本搜索）不忽略隐藏文件/gitignore"
               },
               {
-                "option": "（文本搜索）rg -uu",
-                "option_desc": "包含 .git 等"
+                "option": "rg -uu",
+                "option_desc": "（文本搜索）包含 .git 等"
               },
               {
-                "option": "（文本搜索）rg -N",
-                "option_desc": "不高亮"
+                "option": "rg -N",
+                "option_desc": "（文本搜索）不高亮"
               },
               {
-                "option": "（文本搜索）rg --files",
-                "option_desc": "只列出会搜索的文件"
+                "option": "rg --files",
+                "option_desc": "（文本搜索）只列出会搜索的文件"
               }
             ]
           },
@@ -1493,64 +1493,64 @@
             "desc": "实时进程监控，跨平台",
             "options": [
               {
-                "option": "（进程监控）top",
-                "option_desc": "直接打开实时监控"
+                "option": "top",
+                "option_desc": "（进程监控）直接打开实时监控"
               },
               {
-                "option": "（交互）1",
-                "option_desc": "显示每个 CPU 核心使用率"
+                "option": "1",
+                "option_desc": "（交互）显示每个 CPU 核心使用率"
               },
               {
-                "option": "（交互）M",
-                "option_desc": "按内存使用率排序"
+                "option": "M",
+                "option_desc": "（交互）按内存使用率排序"
               },
               {
-                "option": "（交互）P",
-                "option_desc": "按 CPU 使用率排序，默认"
+                "option": "P",
+                "option_desc": "（交互）按 CPU 使用率排序，默认"
               },
               {
-                "option": "（交互）T",
-                "option_desc": "按运行时间排序"
+                "option": "T",
+                "option_desc": "（交互）按运行时间排序"
               },
               {
-                "option": "（交互）k",
-                "option_desc": "输入 PID 杀死进程"
+                "option": "k",
+                "option_desc": "（交互）输入 PID 杀死进程"
               },
               {
-                "option": "（交互）r",
-                "option_desc": "输入 PID 修改优先级 nice"
+                "option": "r",
+                "option_desc": "（交互）输入 PID 修改优先级 nice"
               },
               {
-                "option": "（交互）c",
-                "option_desc": "显示完整命令路径"
+                "option": "c",
+                "option_desc": "（交互）显示完整命令路径"
               },
               {
-                "option": "（交互）f",
-                "option_desc": "自定义显示列"
+                "option": "f",
+                "option_desc": "（交互）自定义显示列"
               },
               {
-                "option": "（交互）s",
-                "option_desc": "修改刷新间隔秒数"
+                "option": "s",
+                "option_desc": "（交互）修改刷新间隔秒数"
               },
               {
-                "option": "（交互）q",
-                "option_desc": "退出 top"
+                "option": "q",
+                "option_desc": "（交互）退出 top"
               },
               {
-                "option": "（交互）u",
-                "option_desc": "只显示某用户进程"
+                "option": "u",
+                "option_desc": "（交互）只显示某用户进程"
               },
               {
-                "option": "（命令行）top -d 2",
-                "option_desc": "每2秒刷新"
+                "option": "top -d 2",
+                "option_desc": "（命令行）每2秒刷新"
               },
               {
-                "option": "（命令行）top -p 1234",
-                "option_desc": "只监控指定PID"
+                "option": "top -p 1234",
+                "option_desc": "（命令行）只监控指定PID"
               },
               {
-                "option": "（命令行）top -n 5",
-                "option_desc": "刷新5次后退出"
+                "option": "top -n 5",
+                "option_desc": "（命令行）刷新5次后退出"
               }
             ]
           },
@@ -1559,72 +1559,72 @@
             "desc": "top 增强，可视化监控，跨平台",
             "options": [
               {
-                "option": "（系统监控）btop",
-                "option_desc": "直接启动，全能监控"
+                "option": "btop",
+                "option_desc": "（系统监控）直接启动，全能监控"
               },
               {
-                "option": "（操作）方向键 ↑↓",
-                "option_desc": "选择进程"
+                "option": "方向键 ↑↓",
+                "option_desc": "（操作）选择进程"
               },
               {
-                "option": "（操作）Enter",
-                "option_desc": "展开进程详情"
+                "option": "Enter",
+                "option_desc": "（操作）展开进程详情"
               },
               {
-                "option": "（操作）q / ESC",
-                "option_desc": "退出 btop"
+                "option": "q / ESC",
+                "option_desc": "（操作）退出 btop"
               },
               {
-                "option": "（排序）P",
-                "option_desc": "按 CPU 排序"
+                "option": "P",
+                "option_desc": "（排序）按 CPU 排序"
               },
               {
-                "option": "（排序）M",
-                "option_desc": "按内存排序"
+                "option": "M",
+                "option_desc": "（排序）按内存排序"
               },
               {
-                "option": "（排序）T",
-                "option_desc": "按 CPU 时间排序"
+                "option": "T",
+                "option_desc": "（排序）按 CPU 时间排序"
               },
               {
-                "option": "（筛选）f",
-                "option_desc": "搜索/过滤进程名"
+                "option": "f",
+                "option_desc": "（筛选）搜索/过滤进程名"
               },
               {
-                "option": "（筛选）u",
-                "option_desc": "按用户筛选"
+                "option": "u",
+                "option_desc": "（筛选）按用户筛选"
               },
               {
-                "option": "（进程）k",
-                "option_desc": "杀死选中进程"
+                "option": "k",
+                "option_desc": "（进程）杀死选中进程"
               },
               {
-                "option": "（进程）r",
-                "option_desc": "调整进程优先级 nice"
+                "option": "r",
+                "option_desc": "（进程）调整进程优先级 nice"
               },
               {
-                "option": "（面板）F2",
-                "option_desc": "打开设置菜单"
+                "option": "F2",
+                "option_desc": "（面板）打开设置菜单"
               },
               {
-                "option": "（面板）F3 / ←",
-                "option_desc": "→ 切换网卡/磁盘等统计"
+                "option": "F3 / ←",
+                "option_desc": "（面板）→ 切换网卡/磁盘等统计"
               },
               {
-                "option": "（面板）F4",
-                "option_desc": "树状显示进程"
+                "option": "F4",
+                "option_desc": "（面板）树状显示进程"
               },
               {
-                "option": "（面板）F5",
-                "option_desc": "刷新"
+                "option": "F5",
+                "option_desc": "（面板）刷新"
               },
               {
-                "option": "（启动）btop --utf-force",
-                "option_desc": "强制 UTF 显示"
+                "option": "btop --utf-force",
+                "option_desc": "（启动）强制 UTF 显示"
               },
               {
-                "option": "（启动）btop -t",
-                "option_desc": "启动即树状模式"
+                "option": "btop -t",
+                "option_desc": "（启动）启动即树状模式"
               }
             ]
           },
@@ -1728,28 +1728,28 @@
             "desc": "查看磁盘使用情况，跨平台",
             "options": [
               {
-                "option": "（磁盘查看）df",
-                "option_desc": "默认显示，单位块，不直观"
+                "option": "df",
+                "option_desc": "（磁盘查看）默认显示，单位块，不直观"
               },
               {
-                "option": "（磁盘查看）df -h",
-                "option_desc": "人类可读单位，最常用"
+                "option": "df -h",
+                "option_desc": "（磁盘查看）人类可读单位，最常用"
               },
               {
-                "option": "（磁盘查看）df -H",
-                "option_desc": "按1000进制，厂商标称容量"
+                "option": "df -H",
+                "option_desc": "（磁盘查看）按1000进制，厂商标称容量"
               },
               {
-                "option": "（磁盘查看）df -T",
-                "option_desc": "显示文件系统类型 ext4/xfs/apfs"
+                "option": "df -T",
+                "option_desc": "（磁盘查看）显示文件系统类型 ext4/xfs/apfs"
               },
               {
-                "option": "（磁盘查看）df -i",
-                "option_desc": "查看 inode 使用情况"
+                "option": "df -i",
+                "option_desc": "（磁盘查看）查看 inode 使用情况"
               },
               {
-                "option": "（磁盘查看）df /",
-                "option_desc": "只看根分区"
+                "option": "df /",
+                "option_desc": "（磁盘查看）只看根分区"
               }
             ]
           },
@@ -1758,28 +1758,28 @@
             "desc": "查看文件/目录占用空间，跨平台",
             "options": [
               {
-                "option": "（目录大小）du",
-                "option_desc": "查看当前目录总大小"
+                "option": "du",
+                "option_desc": "（目录大小）查看当前目录总大小"
               },
               {
-                "option": "（目录大小）du -h",
-                "option_desc": "人类可读单位，最常用"
+                "option": "du -h",
+                "option_desc": "（目录大小）人类可读单位，最常用"
               },
               {
-                "option": "（目录大小）du -sh",
-                "option_desc": "只显示总大小，不展开子目录"
+                "option": "du -sh",
+                "option_desc": "（目录大小）只显示总大小，不展开子目录"
               },
               {
-                "option": "（目录大小）du -ah",
-                "option_desc": "显示所有文件+目录大小"
+                "option": "du -ah",
+                "option_desc": "（目录大小）显示所有文件+目录大小"
               },
               {
-                "option": "（目录大小）du -d 1 -h",
-                "option_desc": "只展开一级子目录"
+                "option": "du -d 1 -h",
+                "option_desc": "（目录大小）只展开一级子目录"
               },
               {
-                "option": "（目录大小）du -sh *",
-                "option_desc": "查看当前目录下每个项目大小"
+                "option": "du -sh *",
+                "option_desc": "（目录大小）查看当前目录下每个项目大小"
               }
             ]
           },
@@ -1788,28 +1788,28 @@
             "desc": "查看内存使用，Linux 专用",
             "options": [
               {
-                "option": "（内存查看）free",
-                "option_desc": "默认以 KB 显示"
+                "option": "free",
+                "option_desc": "（内存查看）默认以 KB 显示"
               },
               {
-                "option": "（内存查看）free -h",
-                "option_desc": "人类可读单位，最常用"
+                "option": "free -h",
+                "option_desc": "（内存查看）人类可读单位，最常用"
               },
               {
-                "option": "（内存查看）free -m",
-                "option_desc": "以 MB 显示"
+                "option": "free -m",
+                "option_desc": "（内存查看）以 MB 显示"
               },
               {
-                "option": "（内存查看）free -g",
-                "option_desc": "以 GB 显示"
+                "option": "free -g",
+                "option_desc": "（内存查看）以 GB 显示"
               },
               {
-                "option": "（内存查看）free -w",
-                "option_desc": "宽屏显示，分开 buff/cache"
+                "option": "free -w",
+                "option_desc": "（内存查看）宽屏显示，分开 buff/cache"
               },
               {
-                "option": "（内存查看）free -s 2",
-                "option_desc": "每2秒刷新一次"
+                "option": "free -s 2",
+                "option_desc": "（内存查看）每2秒刷新一次"
               }
             ]
           }
@@ -1823,28 +1823,28 @@
             "desc": "网络连通性测试，跨平台",
             "options": [
               {
-                "option": "（网络测试）ping 域名/IP",
-                "option_desc": "测试连通"
+                "option": "ping 域名/IP",
+                "option_desc": "（网络测试）测试连通"
               },
               {
-                "option": "（网络测试）ping -c 4 IP",
-                "option_desc": "只发4个包后停止，最常用"
+                "option": "ping -c 4 IP",
+                "option_desc": "（网络测试）只发4个包后停止，最常用"
               },
               {
-                "option": "（网络测试）ping -i 0.5 IP",
-                "option_desc": "发包间隔0.5秒"
+                "option": "ping -i 0.5 IP",
+                "option_desc": "（网络测试）发包间隔0.5秒"
               },
               {
-                "option": "（网络测试）ping -W 3 IP",
-                "option_desc": "超时等待3秒"
+                "option": "ping -W 3 IP",
+                "option_desc": "（网络测试）超时等待3秒"
               },
               {
-                "option": "（网络测试）ping -s 1000 IP",
-                "option_desc": "设置包大小1000字节"
+                "option": "ping -s 1000 IP",
+                "option_desc": "（网络测试）设置包大小1000字节"
               },
               {
-                "option": "（网络测试）ping -f IP",
-                "option_desc": "洪水ping，压力测试，慎用"
+                "option": "ping -f IP",
+                "option_desc": "（网络测试）洪水ping，压力测试，慎用"
               }
             ]
           },
@@ -1853,44 +1853,44 @@
             "desc": "网络请求下载，跨平台",
             "options": [
               {
-                "option": "（网络请求）curl URL",
-                "option_desc": "只获取网页内容"
+                "option": "curl URL",
+                "option_desc": "（网络请求）只获取网页内容"
               },
               {
-                "option": "（网络请求）curl -I URL",
-                "option_desc": "只看响应头"
+                "option": "curl -I URL",
+                "option_desc": "（网络请求）只看响应头"
               },
               {
-                "option": "（网络请求）curl -O URL",
-                "option_desc": "按原文件名下载"
+                "option": "curl -O URL",
+                "option_desc": "（网络请求）按原文件名下载"
               },
               {
-                "option": "（网络请求）curl -o 文件名 URL",
-                "option_desc": "下载并重命名"
+                "option": "curl -o 文件名 URL",
+                "option_desc": "（网络请求）下载并重命名"
               },
               {
-                "option": "（网络请求）curl -L URL",
-                "option_desc": "自动跟随重定向"
+                "option": "curl -L URL",
+                "option_desc": "（网络请求）自动跟随重定向"
               },
               {
-                "option": "（网络请求）curl -v URL",
-                "option_desc": "详细调试信息"
+                "option": "curl -v URL",
+                "option_desc": "（网络请求）详细调试信息"
               },
               {
-                "option": "（网络请求）curl -X POST URL",
-                "option_desc": "指定请求方法"
+                "option": "curl -X POST URL",
+                "option_desc": "（网络请求）指定请求方法"
               },
               {
-                "option": "（网络请求）curl -d \"key=val\" URL",
-                "option_desc": "POST 表单数据"
+                "option": "curl -d \"key=val\" URL",
+                "option_desc": "（网络请求）POST 表单数据"
               },
               {
-                "option": "（网络请求）curl -H \"Content-Type: application/json\" -d '{}' URL",
-                "option_desc": "发 JSON"
+                "option": "curl -H \"Content-Type: application/json\" -d '{}' URL",
+                "option_desc": "（网络请求）发 JSON"
               },
               {
-                "option": "（网络请求）curl -u user:pass URL",
-                "option_desc": "基础认证"
+                "option": "curl -u user:pass URL",
+                "option_desc": "（网络请求）基础认证"
               }
             ]
           },
@@ -1899,32 +1899,32 @@
             "desc": "文件下载工具，跨平台",
             "options": [
               {
-                "option": "（下载工具）wget URL",
-                "option_desc": "直接下载"
+                "option": "wget URL",
+                "option_desc": "（下载工具）直接下载"
               },
               {
-                "option": "（下载工具）wget -O 新文件名 URL",
-                "option_desc": "下载并重命名"
+                "option": "wget -O 新文件名 URL",
+                "option_desc": "（下载工具）下载并重命名"
               },
               {
-                "option": "（下载工具）wget -c URL",
-                "option_desc": "断点续传（最常用）"
+                "option": "wget -c URL",
+                "option_desc": "（下载工具）断点续传（最常用）"
               },
               {
-                "option": "（下载工具）wget -q URL",
-                "option_desc": "安静模式，不输出日志"
+                "option": "wget -q URL",
+                "option_desc": "（下载工具）安静模式，不输出日志"
               },
               {
-                "option": "（下载工具）wget --limit-rate=1M URL",
-                "option_desc": "限速下载"
+                "option": "wget --limit-rate=1M URL",
+                "option_desc": "（下载工具）限速下载"
               },
               {
-                "option": "（下载工具）wget -r URL",
-                "option_desc": "递归下载整个网站"
+                "option": "wget -r URL",
+                "option_desc": "（下载工具）递归下载整个网站"
               },
               {
-                "option": "（下载工具）wget -i list.txt",
-                "option_desc": "批量下载文件列表"
+                "option": "wget -i list.txt",
+                "option_desc": "（下载工具）批量下载文件列表"
               }
             ]
           },
@@ -1933,36 +1933,36 @@
             "desc": "查看/配置网络接口，跨平台，Mac 常用",
             "options": [
               {
-                "option": "（网络管理）ifconfig",
-                "option_desc": "显示已启用网卡信息"
+                "option": "ifconfig",
+                "option_desc": "（网络管理）显示已启用网卡信息"
               },
               {
-                "option": "（网络管理）ifconfig -a",
-                "option_desc": "显示所有网卡，包括禁用的"
+                "option": "ifconfig -a",
+                "option_desc": "（网络管理）显示所有网卡，包括禁用的"
               },
               {
-                "option": "（网络管理）ifconfig eth0",
-                "option_desc": "查看指定网卡"
+                "option": "ifconfig eth0",
+                "option_desc": "（网络管理）查看指定网卡"
               },
               {
-                "option": "（网络管理）ifconfig eth0 up",
-                "option_desc": "启用网卡"
+                "option": "ifconfig eth0 up",
+                "option_desc": "（网络管理）启用网卡"
               },
               {
-                "option": "（网络管理）ifconfig eth0 down",
-                "option_desc": "禁用网卡"
+                "option": "ifconfig eth0 down",
+                "option_desc": "（网络管理）禁用网卡"
               },
               {
-                "option": "（网络管理）ifconfig eth0 192.168.1.100",
-                "option_desc": "临时设置IP"
+                "option": "ifconfig eth0 192.168.1.100",
+                "option_desc": "（网络管理）临时设置IP"
               },
               {
-                "option": "（网络管理）ifconfig eth0 netmask 255.255.255.0",
-                "option_desc": "设置子网掩码"
+                "option": "ifconfig eth0 netmask 255.255.255.0",
+                "option_desc": "（网络管理）设置子网掩码"
               },
               {
-                "option": "（网络管理）ifconfig eth0 hw ether 00:11:22:33:44:55",
-                "option_desc": "修改MAC地址"
+                "option": "ifconfig eth0 hw ether 00:11:22:33:44:55",
+                "option_desc": "（网络管理）修改MAC地址"
               }
             ]
           },
@@ -1971,36 +1971,36 @@
             "desc": "查看网络连接端口，跨平台，Mac 常用",
             "options": [
               {
-                "option": "（网络连接）netstat -a",
-                "option_desc": "显示所有连接和端口"
+                "option": "netstat -a",
+                "option_desc": "（网络连接）显示所有连接和端口"
               },
               {
-                "option": "（网络连接）netstat -t",
-                "option_desc": "只显示 TCP 连接"
+                "option": "netstat -t",
+                "option_desc": "（网络连接）只显示 TCP 连接"
               },
               {
-                "option": "（网络连接）netstat -u",
-                "option_desc": "只显示 UDP 连接"
+                "option": "netstat -u",
+                "option_desc": "（网络连接）只显示 UDP 连接"
               },
               {
-                "option": "（网络连接）netstat -l",
-                "option_desc": "只显示监听中的端口"
+                "option": "netstat -l",
+                "option_desc": "（网络连接）只显示监听中的端口"
               },
               {
-                "option": "（网络连接）netstat -p",
-                "option_desc": "显示进程 PID/程序名"
+                "option": "netstat -p",
+                "option_desc": "（网络连接）显示进程 PID/程序名"
               },
               {
-                "option": "（网络连接）netstat -n",
-                "option_desc": "不解析域名/端口名，速度快"
+                "option": "netstat -n",
+                "option_desc": "（网络连接）不解析域名/端口名，速度快"
               },
               {
-                "option": "（网络连接）netstat -r",
-                "option_desc": "查看路由表，同 route"
+                "option": "netstat -r",
+                "option_desc": "（网络连接）查看路由表，同 route"
               },
               {
-                "option": "（网络连接）netstat -i",
-                "option_desc": "查看网卡收发数据包统计"
+                "option": "netstat -i",
+                "option_desc": "（网络连接）查看网卡收发数据包统计"
               }
             ]
           },
@@ -2009,32 +2009,32 @@
             "desc": "DNS 查询，跨平台",
             "options": [
               {
-                "option": "（DNS 查询）nslookup 域名",
-                "option_desc": "基础查询"
+                "option": "nslookup 域名",
+                "option_desc": "（DNS 查询）基础查询"
               },
               {
-                "option": "（DNS 查询）nslookup 域名 DNS服务器",
-                "option_desc": "指定DNS查询"
+                "option": "nslookup 域名 DNS服务器",
+                "option_desc": "（DNS 查询）指定DNS查询"
               },
               {
-                "option": "（DNS 查询）nslookup -type=类型 域名",
-                "option_desc": "查指定记录"
+                "option": "nslookup -type=类型 域名",
+                "option_desc": "（DNS 查询）查指定记录"
               },
               {
-                "option": "（DNS 查询）nslookup -query=mx 域名",
-                "option_desc": "查邮件服务器MX记录"
+                "option": "nslookup -query=mx 域名",
+                "option_desc": "（DNS 查询）查邮件服务器MX记录"
               },
               {
-                "option": "（DNS 查询）nslookup -type=ns 域名",
-                "option_desc": "查域名NS服务器"
+                "option": "nslookup -type=ns 域名",
+                "option_desc": "（DNS 查询）查域名NS服务器"
               },
               {
-                "option": "（DNS 查询）nslookup -type=txt 域名",
-                "option_desc": "查TXT记录"
+                "option": "nslookup -type=txt 域名",
+                "option_desc": "（DNS 查询）查TXT记录"
               },
               {
-                "option": "（DNS 查询）nslookup -debug 域名",
-                "option_desc": "显示详细调试信息"
+                "option": "nslookup -debug 域名",
+                "option_desc": "（DNS 查询）显示详细调试信息"
               }
             ]
           },
@@ -2043,36 +2043,36 @@
             "desc": "nslookup 增强，专业 DNS 查询，跨平台",
             "options": [
               {
-                "option": "（DNS 查询）dig 域名",
-                "option_desc": "基础查询 A 记录"
+                "option": "dig 域名",
+                "option_desc": "（DNS 查询）基础查询 A 记录"
               },
               {
-                "option": "（DNS 查询）dig 域名 +short",
-                "option_desc": "只显示 IP，极简输出"
+                "option": "dig 域名 +short",
+                "option_desc": "（DNS 查询）只显示 IP，极简输出"
               },
               {
-                "option": "（DNS 查询）dig @DNS服务器 域名",
-                "option_desc": "指定 DNS 服务器查询"
+                "option": "dig @DNS服务器 域名",
+                "option_desc": "（DNS 查询）指定 DNS 服务器查询"
               },
               {
-                "option": "（DNS 查询）dig 域名 MX",
-                "option_desc": "查询 MX 邮件记录"
+                "option": "dig 域名 MX",
+                "option_desc": "（DNS 查询）查询 MX 邮件记录"
               },
               {
-                "option": "（DNS 查询）dig 域名 NS",
-                "option_desc": "查询 NS 域名服务器"
+                "option": "dig 域名 NS",
+                "option_desc": "（DNS 查询）查询 NS 域名服务器"
               },
               {
-                "option": "（DNS 查询）dig 域名 TXT",
-                "option_desc": "查询 TXT 记录"
+                "option": "dig 域名 TXT",
+                "option_desc": "（DNS 查询）查询 TXT 记录"
               },
               {
-                "option": "（DNS 查询）dig -x 1.1.1.1",
-                "option_desc": "反向解析 IP → 域名"
+                "option": "dig -x 1.1.1.1",
+                "option_desc": "（DNS 查询）反向解析 IP → 域名"
               },
               {
-                "option": "（DNS 查询）dig 域名 +trace",
-                "option_desc": "追踪完整 DNS 解析路径"
+                "option": "dig 域名 +trace",
+                "option_desc": "（DNS 查询）追踪完整 DNS 解析路径"
               }
             ]
           },
@@ -2081,36 +2081,36 @@
             "desc": "远程登录服务器，跨平台",
             "options": [
               {
-                "option": "（远程登录）ssh user@host",
-                "option_desc": "基础登录（默认端口22）"
+                "option": "ssh user@host",
+                "option_desc": "（远程登录）基础登录（默认端口22）"
               },
               {
-                "option": "（远程登录）ssh user@host -p 端口号",
-                "option_desc": "指定端口登录"
+                "option": "ssh user@host -p 端口号",
+                "option_desc": "（远程登录）指定端口登录"
               },
               {
-                "option": "（远程登录）ssh -i 私钥文件 user@host",
-                "option_desc": "使用密钥登录"
+                "option": "ssh -i 私钥文件 user@host",
+                "option_desc": "（远程登录）使用密钥登录"
               },
               {
-                "option": "（远程登录）ssh -D 1080 user@host",
-                "option_desc": "建立 SOCKS5 代理"
+                "option": "ssh -D 1080 user@host",
+                "option_desc": "（远程登录）建立 SOCKS5 代理"
               },
               {
-                "option": "（远程登录）ssh -L 本地端口:目标:端口 host",
-                "option_desc": "本地端口转发"
+                "option": "ssh -L 本地端口:目标:端口 host",
+                "option_desc": "（远程登录）本地端口转发"
               },
               {
-                "option": "（远程登录）ssh -X user@host",
-                "option_desc": "图形界面转发"
+                "option": "ssh -X user@host",
+                "option_desc": "（远程登录）图形界面转发"
               },
               {
-                "option": "（远程登录）ssh host \"command\"",
-                "option_desc": "远程执行命令并退出"
+                "option": "ssh host \"command\"",
+                "option_desc": "（远程登录）远程执行命令并退出"
               },
               {
-                "option": "（远程登录）ssh -q user@host",
-                "option_desc": "安静模式，少输出"
+                "option": "ssh -q user@host",
+                "option_desc": "（远程登录）安静模式，少输出"
               }
             ]
           },
@@ -2119,28 +2119,28 @@
             "desc": "跨主机文件复制，基于SSH",
             "options": [
               {
-                "option": "（远程传输）scp 本地文件 远程用户@IP:目标路径",
-                "option_desc": "本地→远程"
+                "option": "scp 本地文件 远程用户@IP:目标路径",
+                "option_desc": "（远程传输）本地→远程"
               },
               {
-                "option": "（远程传输）scp 远程用户@IP:文件路径 本地路径",
-                "option_desc": "远程→本地"
+                "option": "scp 远程用户@IP:文件路径 本地路径",
+                "option_desc": "（远程传输）远程→本地"
               },
               {
-                "option": "（远程传输）scp -P 端口 文件 远程路径",
-                "option_desc": "指定SSH端口"
+                "option": "scp -P 端口 文件 远程路径",
+                "option_desc": "（远程传输）指定SSH端口"
               },
               {
-                "option": "（远程传输）scp -r 文件夹 远程路径",
-                "option_desc": "传整个文件夹"
+                "option": "scp -r 文件夹 远程路径",
+                "option_desc": "（远程传输）传整个文件夹"
               },
               {
-                "option": "（远程传输）scp -i 私钥 文件 远程路径",
-                "option_desc": "密钥认证传输"
+                "option": "scp -i 私钥 文件 远程路径",
+                "option_desc": "（远程传输）密钥认证传输"
               },
               {
-                "option": "（远程传输）scp -C 文件 远程路径",
-                "option_desc": "开启压缩传输"
+                "option": "scp -C 文件 远程路径",
+                "option_desc": "（远程传输）开启压缩传输"
               }
             ]
           },
@@ -2149,32 +2149,32 @@
             "desc": "远程同步/增量复制，比scp更强",
             "options": [
               {
-                "option": "（文件同步）rsync 源 目标",
-                "option_desc": "基础同步"
+                "option": "rsync 源 目标",
+                "option_desc": "（文件同步）基础同步"
               },
               {
-                "option": "（文件同步）rsync -a 源 目标",
-                "option_desc": "归档模式（最常用）"
+                "option": "rsync -a 源 目标",
+                "option_desc": "（文件同步）归档模式（最常用）"
               },
               {
-                "option": "（文件同步）rsync -av 源 目标",
-                "option_desc": "归档 + 显示过程"
+                "option": "rsync -av 源 目标",
+                "option_desc": "（文件同步）归档 + 显示过程"
               },
               {
-                "option": "（文件同步）rsync -avz 源 目标",
-                "option_desc": "归档 + 压缩 + 显示"
+                "option": "rsync -avz 源 目标",
+                "option_desc": "（文件同步）归档 + 压缩 + 显示"
               },
               {
-                "option": "（文件同步）rsync -av --delete 源 目标",
-                "option_desc": "严格镜像，删除多余文件"
+                "option": "rsync -av --delete 源 目标",
+                "option_desc": "（文件同步）严格镜像，删除多余文件"
               },
               {
-                "option": "（文件同步）rsync -avP 源 目标",
-                "option_desc": "显示进度 + 断点续传"
+                "option": "rsync -avP 源 目标",
+                "option_desc": "（文件同步）显示进度 + 断点续传"
               },
               {
-                "option": "（文件同步）rsync -e \"ssh -p22\" 源 目标",
-                "option_desc": "通过 SSH 同步（指定端口）"
+                "option": "rsync -e \"ssh -p22\" 源 目标",
+                "option_desc": "（文件同步）通过 SSH 同步（指定端口）"
               }
             ]
           },
@@ -2206,28 +2206,28 @@
             "desc": "输出文本 / 变量，跨平台",
             "options": [
               {
-                "option": "（输出/写入）echo \"内容\"",
-                "option_desc": "直接打印文字"
+                "option": "echo \"内容\"",
+                "option_desc": "（输出/写入）直接打印文字"
               },
               {
-                "option": "（输出/写入）echo $变量",
-                "option_desc": "打印系统/自定义变量"
+                "option": "echo $变量",
+                "option_desc": "（输出/写入）打印系统/自定义变量"
               },
               {
-                "option": "（输出/写入）echo -n \"文字\"",
-                "option_desc": "不自动换行"
+                "option": "echo -n \"文字\"",
+                "option_desc": "（输出/写入）不自动换行"
               },
               {
-                "option": "（输出/写入）echo -e \"a\\nb\"",
-                "option_desc": "启用转义字符（换行、制表符）"
+                "option": "echo -e \"a\\nb\"",
+                "option_desc": "（输出/写入）启用转义字符（换行、制表符）"
               },
               {
-                "option": "（输出/写入）echo 内容 > 文件",
-                "option_desc": "覆盖写入文件"
+                "option": "echo 内容 > 文件",
+                "option_desc": "（输出/写入）覆盖写入文件"
               },
               {
-                "option": "（输出/写入）echo 内容 >> 文件",
-                "option_desc": "追加写入文件"
+                "option": "echo 内容 >> 文件",
+                "option_desc": "（输出/写入）追加写入文件"
               }
             ]
           }
